@@ -29,6 +29,8 @@ public class SecurityContextRepository implements ServerSecurityContextRepositor
     }
     //obtiene el token y le pasa la información al AuthManager para que lo valide y extraiga los datos
     //el resultado es mapeado al contexto de seguridad de Spring para realizar la autenticación y autorización
+//    Si usaras Mono.just(...) y el cliente no mandara token (como en POST /login),
+//    tu aplicación se rompería con NullPointerException. Con justOrEmpty simplemente queda vacío.
     @Override
     public Mono<SecurityContext> load(ServerWebExchange exchange) {
         return Mono.justOrEmpty(exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION))

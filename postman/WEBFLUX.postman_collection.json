@@ -1,0 +1,547 @@
+{
+  "info": {
+    "_postman_id": "3678feb0-4a82-4f1f-93f2-9bb33269a7b4",
+    "name": "WEBFLUX",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "10706640",
+    "_collection_link": "https://go.postman.co/collection/10706640-3678feb0-4a82-4f1f-93f2-9bb33269a7b4?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "find products-auth basic",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "user1",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "user1",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/event-stream"
+          }
+        ],
+        "url": {
+          "raw": "localhost:8000/productos",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "productos"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "find products-auth basic",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/event-stream"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8000/productos",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "productos"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "transfer-encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "vary",
+              "value": "Origin, Access-Control-Request-Method, Access-Control-Request-Headers"
+            },
+            {
+              "key": "content-type",
+              "value": "text/event-stream;charset=UTF-8"
+            }
+          ],
+          "cookie": [],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "find products rastreador",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/event-stream"
+          }
+        ],
+        "url": {
+          "raw": "localhost:8080/elementos/2",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "elementos",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "find products by category",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/products/category/Electronics",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "products",
+            "category",
+            "Electronics"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "find products by id",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/event-stream"
+          }
+        ],
+        "url": {
+          "raw": "localhost:8000/producto?cod=102",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "producto"
+          ],
+          "query": [
+            {
+              "key": "cod",
+              "value": "102"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create products",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"codProducto\": 108,\r\n    \"nombre\": \"Clean\",\r\n    \"categoria\": \"Limpieza\",\r\n    \"precioUnitario\": 2,\r\n    \"stock\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8000/alta",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "alta"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create products Mongo",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": 108,\r\n    \"nombre\": \"Clean\",\r\n    \"categoria\": \"Limpieza\",\r\n    \"precioUnitario\": 2,\r\n    \"stock\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8000/alta",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "alta"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete products",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {
+          "accept": true
+        }
+      },
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/event-stream"
+          }
+        ],
+        "url": {
+          "raw": "localhost:8000/eliminar?cod=108",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "eliminar"
+          ],
+          "query": [
+            {
+              "key": "cod",
+              "value": "108"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update price product",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "//@GetMapping(\"/get-by-category\")\r\n//    public ResponseEntity<Flux<Product>> getProductsByCategory(@RequestParam String category) {\r\n //       return ResponseEntity.ok(productService.getProductByCategory(category));\r\n //   }"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8000/actualizar?cod=108&precio=3.5",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "actualizar"
+          ],
+          "query": [
+            {
+              "key": "cod",
+              "value": "108"
+            },
+            {
+              "key": "precio",
+              "value": "3.5"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "send variable",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/event-stream"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Sebastián\",\r\n  \"mensaje\": \"Probando envío de variables\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/ch-ms-mediator-call/api/v1/variables",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "ch-ms-mediator-call",
+            "api",
+            "v1",
+            "variables"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "grok-send variable",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/event-stream"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Sebastián\",\r\n  \"mensaje\": \"Probando envío de variables\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://closable-paparazzi-deepness.ngrok-free.dev/ch-ms-mediator-call/api/v1/variables",
+          "protocol": "https",
+          "host": [
+            "closable-paparazzi-deepness",
+            "ngrok-free",
+            "dev"
+          ],
+          "path": [
+            "ch-ms-mediator-call",
+            "api",
+            "v1",
+            "variables"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var token = pm.response.text(); // obtiene el JWT como string\r",
+              "console.log(\"token:\", token);\r",
+              "\r",
+              "pm.globals.set(\"Bearer authorization\", \"Bearer \" + token);\r",
+              "pm.globals.set(\"authorization\", token);\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"user\": \"user1\",\r\n  \"pwd\": \"user1\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "find products-auth JTW",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{authorization}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/event-stream"
+          }
+        ],
+        "url": {
+          "raw": "localhost:8000/productos",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "productos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create products securizado",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"codProducto\": 107,\r\n    \"nombre\": \"Detergente\",\r\n    \"categoria\": \"Limpieza\",\r\n    \"precioUnitario\": 8.7,\r\n    \"stock\": 12\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8000/alta",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "alta"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete products - auth jwt",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {
+          "accept": true
+        }
+      },
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/event-stream"
+          }
+        ],
+        "url": {
+          "raw": "localhost:8000/eliminar?cod=108",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "eliminar"
+          ],
+          "query": [
+            {
+              "key": "cod",
+              "value": "108"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "find products rastreador con  jwt",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/event-stream"
+          }
+        ],
+        "url": {
+          "raw": "localhost:8080/elementos/2",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "elementos",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

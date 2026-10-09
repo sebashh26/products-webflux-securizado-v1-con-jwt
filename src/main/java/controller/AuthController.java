@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
+import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,15 +25,27 @@ public class AuthController {
     @Value("${jwt.secret}")
     private String jwtSecret;
 
-    private static final long EXPIRATION_TIME = 85_000_000L;
+    private static final long EXPIRATION_TIME = 180_000L;
 
     //obj q hace la autentication
-    MapReactiveUserDetailsService userDetailsService;
+    ReactiveUserDetailsService userDetailsService;
 
-    public AuthController(MapReactiveUserDetailsService userDetailsService) {
+    public AuthController(ReactiveUserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
 
+//    Línea de tiempo
+//    ARRANQUE (una vez)
+//    Spring ejecuta users()
+//  └── crea el puente y lo guarda
+//            (no se busca ningún usuario, no hay "admin" todavía)
+//
+//        ... la aplicación queda corriendo ...
+//
+//    LOGIN de "admin" (cada vez que alguien entra)
+//            puente.findByUsername("admin")
+//            └── el puente llama a userDetailsService.findByUsername("admin")
+//            └── se ejecuta TU método: BD, flatMap, map, UserDetails
     @PostMapping(value="login", consumes = MediaType.APPLICATION_JSON_VALUE,produces=MediaType.TEXT_PLAIN_VALUE)
     public Mono<ResponseEntity<String>> login(@RequestBody Credentials credentials){
         //si el usuario es válido genera un token con su información y se la envía al cliente
